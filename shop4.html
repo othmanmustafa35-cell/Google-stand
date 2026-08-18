@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مفروشات هيكس | Hex Furniture</title>
+    <style>
+        /* إعدادات الصفحة الأساسية */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            text-align: center;
+            color: white; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-color: #1a1a1a;
+        }
+
+        /* -------------------------------------- */
+        /* خلفية الأثاث مع غباش خفيف (5%) */
+        /* -------------------------------------- */
+        .bg-image {
+            position: fixed;
+            top: -2%; 
+            left: -2%; 
+            width: 104vw; 
+            height: 104vh;
+            /* صورة أثاث فخمة في الخلفية */
+            background: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1080&auto=format&fit=crop') no-repeat center center/cover;
+            filter: blur(3px) brightness(0.6); /* غباش خفيف جداً للحفاظ على التفاصيل مع تعتيم بسيط */
+            z-index: -2; 
+        }
+
+        /* -------------------------------------- */
+        /* ملصقات الأثاث النابضة (شبه شفافة وإطار أبيض) */
+        /* -------------------------------------- */
+        .sticker {
+            position: fixed;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15); /* شبه شفافة */
+            border: 2px solid rgba(255, 255, 255, 0.8); /* حواف بيضاء */
+            border-radius: 12px; /* زوايا منحنية */
+            padding: 10px;
+            backdrop-filter: blur(4px);
+            z-index: 0;
+            /* حركة النبض والتوهج البطيء */
+            animation: glowPulse 4s infinite alternate ease-in-out;
+        }
+
+        /* توزيع الملصقات في أماكن مميزة على الشاشة */
+        .sticker-1 { top: 8%; right: 8%; } /* كنبة يمين أعلى */
+        .sticker-2 { top: 25%; left: 6%; } /* مصباح يسار */
+        .sticker-3 { bottom: 12%; right: 10%; } /* سرير يمين أسفل */
+        .sticker-4 { bottom: 22%; left: 8%; } /* كرسي يسار أسفل */
+
+        /* برمجة حركة النبض والتوهج */
+        @keyframes glowPulse {
+            0% { 
+                box-shadow: 0 0 5px rgba(255,255,255,0.2); 
+                transform: scale(1); 
+                opacity: 0.6; 
+            }
+            100% { 
+                box-shadow: 0 0 20px rgba(255,255,255,0.9); 
+                transform: scale(1.1); 
+                opacity: 0.95; 
+            }
+        }
+
+        /* -------------------------------------- */
+        /* المحتوى الأساسي والأزرار */
+        /* -------------------------------------- */
+        .content { 
+            max-width: 400px; 
+            margin: 0 auto; 
+            padding: 50px 20px; 
+            position: relative;
+            z-index: 1; 
+        }
+
+        /* شعار المعرض */
+        img.logo { 
+            width: 130px; 
+            height: 130px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 10px; 
+            border: 3px solid #d4af37; /* إطار بلون ذهبي فخم */
+            background-color: rgba(0,0,0,0.5);
+            padding: 5px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        h1 { font-size: 30px; margin-bottom: 5px; font-weight: bold; text-shadow: 2px 2px 5px rgba(0,0,0,0.9); letter-spacing: 1px; color: #fff; }
+        p { color: #e0e0e0; margin-bottom: 35px; font-size: 15px; text-shadow: 1px 1px 4px rgba(0,0,0,0.9); }
+        
+        /* أزرار زجاجية فخمة بلون داكن ولمسة ذهبية تناسب الأثاث */
+        a.btn { 
+            display: block; 
+            width: 100%; 
+            padding: 16px; 
+            margin-bottom: 16px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            color: #ffffff;
+            font-size: 17px; 
+            font-weight: bold; 
+            box-sizing: border-box; 
+            transition: all 0.3s ease;
+            
+            /* تصميم الزجاج الداكن */
+            background: rgba(20, 20, 20, 0.55); 
+            backdrop-filter: blur(8px); 
+            border: 1px solid rgba(212, 175, 55, 0.5); /* إطار ذهبي/نحاسي خفيف */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+        
+        a.btn:active { transform: scale(0.96); background: rgba(0, 0, 0, 0.7); }
+    </style>
+</head>
+<body>
+
+    <!-- صورة الخلفية (غباش 5%) -->
+    <div class="bg-image"></div>
+
+    <!-- ملصقات الأثاث النابضة المتوهجة -->
+    <!-- كنبة -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2610/2610099.png" class="sticker sticker-1" alt="Sofa">
+    <!-- مصباح طاولة -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2610/2610052.png" class="sticker sticker-2" alt="Lamp">
+    <!-- سرير -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2610/2610118.png" class="sticker sticker-3" alt="Bed">
+    <!-- كرسي فخم -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2610/2610078.png" class="sticker sticker-4" alt="Armchair">
+
+    <!-- قسم المحتوى والأزرار -->
+    <div class="content">
+        <!-- الشعار (أيقونة أثاث) -->
+        <img src="https://cdn-icons-png.flaticon.com/512/6121/6121175.png" alt="شعار مفروشات هيكس" class="logo">
+        
+        <h1>مفروشات هيكس</h1>
+        <p>جودة وأناقة تليق بمنزلك.. نتشرف بتقييمك!</p>
+
+        <!-- الروابط الخاصة بك -->
+        <a href="https://reviewthis.biz/1613afb2" class="btn">⭐ قيمنا على جوجل</a>
+        
+        <a href="https://www.instagram.com/othman_alaqqad?igsh=MXh3cHdjMzZnbWE2Nw%3D%3D&utm_source=qr" class="btn">📸 تابعنا على انستقرام</a>
+        
+        <a href="https://snapchat.com/t/cGr2yvt7" class="btn">👻 تابعنا على سناب شات</a>
+        
+        <a href="https://wa.me/qr/O4RDOZZIGYNIE1" class="btn">💬 تواصل معنا واتساب</a>
+    </div>
+
+</body>
+</html>
