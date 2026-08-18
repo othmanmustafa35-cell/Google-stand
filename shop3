@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض OKO للألبسة</title>
+    <style>
+        /* إعدادات الصفحة الأساسية */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            text-align: center;
+            color: white; /* لون النص أبيض */
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* -------------------------------------- */
+        /* خلفية الملابس المغبشة (7%) */
+        /* -------------------------------------- */
+        .bg-image {
+            position: fixed;
+            top: -5%; 
+            left: -5%; 
+            width: 110vw; /* حجم أكبر قليلاً لمنع ظهور حواف بيضاء بسبب الغباش */
+            height: 110vh;
+            /* صورة خلفية لملابس/معرض أزياء */
+            background: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=1080&auto=format&fit=crop') no-repeat center center/cover;
+            filter: blur(6px) brightness(0.5); /* تغبيش وتعتيم خفيف لتوضيح الكلام */
+            z-index: -2; 
+        }
+
+        /* -------------------------------------- */
+        /* العناصر المتحركة (ملابس وأزياء) */
+        /* -------------------------------------- */
+        .bg-animation {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            z-index: -1; 
+            overflow: hidden;
+        }
+
+        .clothing-icon {
+            position: absolute;
+            width: 60px;
+            opacity: 0.5; /* شفافية الأيقونات */
+            filter: drop-shadow(0 0 8px rgba(255,255,255,0.3));
+        }
+
+        /* حركات الاصطدام */
+        @keyframes moveX { 0% { left: 0px; } 100% { left: calc(100vw - 60px); } }
+        @keyframes moveY { 0% { top: 0px; } 100% { top: calc(100vh - 60px); } }
+
+        /* أيقونات الملابس بسرعات مختلفة */
+        .shirt { animation: moveX 8s linear infinite alternate, moveY 10s linear infinite alternate; }
+        .dress { animation: moveX 9s linear infinite alternate-reverse, moveY 7s linear infinite alternate; width: 50px; }
+        .bag { animation: moveX 11s linear infinite alternate, moveY 8s linear infinite alternate-reverse; width: 55px; }
+        .hanger { animation: moveX 7s linear infinite alternate-reverse, moveY 12s linear infinite alternate-reverse; width: 65px; }
+
+        /* -------------------------------------- */
+        /* المحتوى الأساسي والأزرار الشفافة */
+        /* -------------------------------------- */
+        .content { 
+            max-width: 400px; 
+            margin: 0 auto; 
+            padding: 50px 20px; 
+            position: relative;
+            z-index: 1; 
+        }
+
+        /* شعار المعرض */
+        img.logo { 
+            width: 120px; 
+            height: 120px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 10px; 
+            border: 3px solid rgba(255, 255, 255, 0.8); /* إطار أبيض شفاف للشعار */
+            background-color: rgba(0,0,0,0.3);
+            padding: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 { font-size: 32px; margin-bottom: 5px; font-weight: bold; text-shadow: 2px 2px 5px rgba(0,0,0,0.9); letter-spacing: 2px; }
+        p { color: #f0f0f0; margin-bottom: 35px; font-size: 16px; text-shadow: 1px 1px 4px rgba(0,0,0,0.9); }
+        
+        /* الأزرار البيضاء الشفافة (تصميم زجاجي - Glassmorphism) */
+        a.btn { 
+            display: block; 
+            width: 100%; 
+            padding: 16px; 
+            margin-bottom: 15px; 
+            border-radius: 15px; 
+            text-decoration: none; 
+            color: white;
+            font-size: 18px; 
+            font-weight: bold; 
+            box-sizing: border-box; 
+            transition: all 0.3s ease;
+            
+            /* سر التصميم الزجاجي */
+            background: rgba(255, 255, 255, 0.15); /* لون أبيض شفاف جداً */
+            backdrop-filter: blur(10px); /* غباش لخلفية الزر نفسه */
+            border: 1px solid rgba(255, 255, 255, 0.4); /* إطار أبيض خفيف */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+        
+        /* تأثير عند اللمس على الزر */
+        a.btn:active { transform: scale(0.95); background: rgba(255, 255, 255, 0.25); }
+    </style>
+</head>
+<body>
+
+    <!-- صورة الخلفية المغبشة -->
+    <div class="bg-image"></div>
+
+    <!-- قسم الملابس المتحركة في الخلفية -->
+    <div class="bg-animation">
+        <!-- قميص -->
+        <img src="https://cdn-icons-png.flaticon.com/512/863/863684.png" class="clothing-icon shirt" alt="Shirt">
+        <!-- فستان -->
+        <img src="https://cdn-icons-png.flaticon.com/512/1785/1785255.png" class="clothing-icon dress" alt="Dress">
+        <!-- حقيبة تسوق -->
+        <img src="https://cdn-icons-png.flaticon.com/512/1008/1008010.png" class="clothing-icon bag" alt="Shopping Bag">
+        <!-- علاقة ملابس -->
+        <img src="https://cdn-icons-png.flaticon.com/512/2742/2742104.png" class="clothing-icon hanger" alt="Hanger">
+    </div>
+
+    <!-- قسم المحتوى -->
+    <div class="content">
+        <!-- الشعار (أيقونة أزياء بيضاء) يمكنك لاحقاً وضع صورة شعار OKO الحقيقي مكان هذا الرابط -->
+        <img src="https://cdn-icons-png.flaticon.com/512/2806/2806144.png" alt="شعار المعرض" class="logo">
+        
+        <h1>معرض OKO</h1>
+        <p>أناقتك تهمنا.. نتشرف بتقييمك ومتابعتك!</p>
+
+        <!-- روابطك تم وضعها هنا -->
+        <a href="https://reviewthis.biz/1613afb2" class="btn">⭐ قيمنا على جوجل</a>
+        
+        <a href="https://www.instagram.com/othman_alaqqad?igsh=MXh3cHdjMzZnbWE2Nw%3D%3D&utm_source=qr" class="btn">📸 تابعنا على انستقرام</a>
+        
+        <a href="https://snapchat.com/t/cGr2yvt7" class="btn">👻 تابعنا على سناب شات</a>
+        
+        <a href="https://wa.me/qr/O4RDOZZIGYNIE1" class="btn">💬 تواصل معنا واتساب</a>
+    </div>
+
+</body>
+</html>
