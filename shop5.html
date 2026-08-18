@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أبو حماد للإنارة الكهربائية</title>
+    <style>
+        /* إعدادات الصفحة الأساسية */
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            text-align: center;
+            color: white; 
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-color: #111; /* لون داكن للأساس */
+        }
+
+        /* -------------------------------------- */
+        /* خلفية الإضاءة (بدون غباش نهائياً) */
+        /* -------------------------------------- */
+        .bg-image {
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100vw; 
+            height: 100vh;
+            /* صورة خلفية فخمة للإنارة والثريات + تعتيم خفيف جداً لتوضيح النصوص */
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1543332143-4e8c27e32a0c?q=80&w=1080&auto=format&fit=crop') no-repeat center center/cover;
+            /* تم إزالة الغباش (filter: blur) بالكامل بناء على طلبك */
+            z-index: -2; 
+        }
+
+        /* -------------------------------------- */
+        /* ملصقات الإنارة (تتوهج وتنبض بالضوء) */
+        /* -------------------------------------- */
+        .sticker {
+            position: fixed;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1); 
+            border: 2px solid rgba(255, 223, 0, 0.6); /* حواف بلون الضوء الذهبي */
+            border-radius: 12px; 
+            padding: 10px;
+            backdrop-filter: blur(2px);
+            z-index: 0;
+            /* تأثير النبض الضوئي */
+            animation: lightPulse 3s infinite alternate ease-in-out;
+        }
+
+        /* توزيع ملصقات الإنارة */
+        .sticker-1 { top: 10%; right: 5%; }  /* ثريا */
+        .sticker-2 { top: 28%; left: 8%; }   /* لمبة عصرية */
+        .sticker-3 { bottom: 15%; right: 8%; } /* مصباح أرضي */
+        .sticker-4 { bottom: 25%; left: 5%; }  /* إضاءة جدارية */
+
+        /* برمجة توهج الإضاءة (النبض) */
+        @keyframes lightPulse {
+            0% { 
+                box-shadow: 0 0 5px rgba(255, 223, 0, 0.2); 
+                transform: scale(1); 
+                opacity: 0.7; 
+            }
+            100% { 
+                box-shadow: 0 0 25px rgba(255, 223, 0, 0.9); 
+                transform: scale(1.15); 
+                opacity: 1; 
+            }
+        }
+
+        /* -------------------------------------- */
+        /* المحتوى الأساسي والأزرار */
+        /* -------------------------------------- */
+        .content { 
+            max-width: 400px; 
+            margin: 0 auto; 
+            padding: 50px 20px; 
+            position: relative;
+            z-index: 1; 
+        }
+
+        /* شعار المعرض */
+        img.logo { 
+            width: 120px; 
+            height: 120px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            margin-bottom: 10px; 
+            border: 3px solid #ffdf00; /* إطار أصفر مضيء للشعار */
+            background-color: rgba(0,0,0,0.6);
+            padding: 12px;
+            box-shadow: 0 0 25px rgba(255, 223, 0, 0.6); /* إشعاع حول الشعار */
+        }
+        
+        h1 { font-size: 28px; margin-bottom: 5px; font-weight: bold; text-shadow: 2px 2px 6px rgba(0,0,0,1); letter-spacing: 1px; color: #fff; }
+        p { color: #f9f9f9; margin-bottom: 35px; font-size: 16px; text-shadow: 1px 1px 5px rgba(0,0,0,1); }
+        
+        /* أزرار زجاجية داكنة مع لمسة إضاءة دافئة */
+        a.btn { 
+            display: block; 
+            width: 100%; 
+            padding: 16px; 
+            margin-bottom: 16px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            color: #ffffff;
+            font-size: 17px; 
+            font-weight: bold; 
+            box-sizing: border-box; 
+            transition: all 0.3s ease;
+            
+            /* تصميم الأزرار */
+            background: rgba(10, 10, 10, 0.65); 
+            backdrop-filter: blur(8px); 
+            border: 1px solid rgba(255, 223, 0, 0.4); /* إطار بلون الضوء */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+        }
+        
+        a.btn:active { transform: scale(0.96); box-shadow: 0 0 20px rgba(255, 223, 0, 0.5); }
+    </style>
+</head>
+<body>
+
+    <!-- صورة الخلفية (بدون غباش) -->
+    <div class="bg-image"></div>
+
+    <!-- ملصقات الإنارة التي تتوهج -->
+    <!-- ثريا -->
+    <img src="https://cdn-icons-png.flaticon.com/512/3082/3082156.png" class="sticker sticker-1" alt="Chandelier">
+    <!-- لمبة ليد عصرية -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2988/2988019.png" class="sticker sticker-2" alt="Light Bulb">
+    <!-- مصباح أرضي -->
+    <img src="https://cdn-icons-png.flaticon.com/512/3218/3218556.png" class="sticker sticker-3" alt="Floor Lamp">
+    <!-- إضاءة جدارية -->
+    <img src="https://cdn-icons-png.flaticon.com/512/3014/3014761.png" class="sticker sticker-4" alt="Wall Light">
+
+    <!-- قسم المحتوى -->
+    <div class="content">
+        <!-- الشعار (أيقونة ثريا وإنارة) -->
+        <img src="https://cdn-icons-png.flaticon.com/512/3133/3133310.png" alt="شعار أبو حماد للإنارة" class="logo">
+        
+        <h1>أبو حماد للإنارة</h1>
+        <p>أنر منزلك بأرقى التصاميم.. نتشرف بتقييمك!</p>
+
+        <!-- الروابط الخاصة بك -->
+        <a href="https://reviewthis.biz/1613afb2" class="btn">⭐ قيمنا على جوجل</a>
+        
+        <a href="https://www.instagram.com/othman_alaqqad?igsh=MXh3cHdjMzZnbWE2Nw%3D%3D&utm_source=qr" class="btn">📸 تابعنا على انستقرام</a>
+        
+        <a href="https://snapchat.com/t/cGr2yvt7" class="btn">👻 تابعنا على سناب شات</a>
+        
+        <a href="https://wa.me/qr/O4RDOZZIGYNIE1" class="btn">💬 تواصل معنا واتساب</a>
+    </div>
+
+</body>
+</html>
